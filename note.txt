@@ -1,0 +1,34 @@
+======== Install Django ========
+
+py -m venv .venv
+source .venv/Scripts/activate
+py -m pip install django
+py -m pip install -U pip
+import django
+print(django.get_version())
+
+=== Get & Istall Requirements ===
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+======== setup.sh script ========
+
+bash setup.sh
+
+
+
+
+
+
+=== TO DO ===
+
+spolszczyć admin
+
+
+dokumentacja
+prezentacja
+
+
+__init__ pakiety
+settings.py: Debug=False, Hosts [*]
