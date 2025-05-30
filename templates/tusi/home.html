@@ -1,0 +1,118 @@
+{% extends 'tusi/layout.html' %}
+
+{% load static %}
+
+{% block hero %}
+    <img src="media/hero.png">
+{% endblock hero %}
+
+
+{% block header %}
+    <div class="home-header">Diagnoza i terapia TUSI</div>
+{% endblock header %}
+
+{% block content %}
+
+
+{% if home_1 %}
+    <div class="fix-offer-bg">
+        {% include 'tusi/section.html' with item=home_1 %}
+    </div>
+{% endif %}
+
+<!-- offer panel -->
+<div id="offer-container">
+    <div class="offer-header header">Nasza oferta</div>
+    <div class="offer-section-body">
+    <div class="offer-bg"></div>
+        {% for item in offer %} 
+        <div class="offer-col">
+            {% if item.title %}
+                <h2 class="offer-h2">{{ item.title }}</h2>
+                <hr>
+            {% endif %}
+                <div class="height-limiter">
+                    <p>{{ item.text|safe }}</p>
+                </div>
+            <a href="{% url 'offer_subpage' slug=item.offer_item.slug %}">więcej</a>
+        </div> <!-- col -->
+        {% endfor %}
+    </div> <!-- section-body -->
+    <p>Sprawdź całą naszą ofertę <a href="{% url 'offer' %}">tutaj</a></p>
+    <div class="offer-margin"></div>
+</div> <!-- container -->
+
+
+{% comment %} 
+{% if news %}
+    {% with item=news %} 
+        {% include 'tusi/section.html' %}
+    {% endwith %}
+{% endif %} 
+{% endcomment %}
+
+
+{% if home_2 %}
+    {% include 'tusi/section.html' with item=home_2 %}
+{% endif %}
+
+
+<!-- gallery panel -->
+<div id="gallery-container">
+    <div class="gallery-header header">Galeria</div>
+    <p>Zobacz naszą galerię by poznać nas lepiej</p>
+    <div class="gallery-section-body">
+        {% for item in gallery %} 
+        <div class="gallery-col">
+            {% if item.image %}
+            <div class="img-wrapper">
+                <a href="{% url 'gallery' %}">
+                    <img src="{{ item.image.url }}"/>
+                </a>
+            </div>
+            {% endif %}
+                <p>{{ item.text|safe }}</p>
+        </div> <!-- col -->
+        {% endfor %}
+    </div> <!-- section-body -->
+</div> <!-- container -->
+
+
+<div class="map-container">
+    <div class="header">Tu jesteśmy</div>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d488.86832495747973!2d18.6230613056751!3d54.34880316817603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd752c6b0d536f%3A0xab483e59b142c001!2sTUSI%20-%20terapia%20sensoryczna%20Gda%C5%84sk%2C%20Terapia%20r%C4%99ki%20Gda%C5%84sk!5e0!3m2!1spl!2spl!4v1747943854916!5m2!1spl!2spl"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+
+{% endblock content %}
+
+
+{% comment %}
+
+{% if offer %}
+    {% with item=offer %}  
+        {% include 'tusi/section.html' %}
+    {% endwith %}
+{% endif %}
+{% endcomment %}
+
+
+
+{% comment %} 
+views.py - home_section, offer, last_news, last_about
+{% endcomment %}
+
+
+{% comment %} views.py:
+'news': [last_news] if last_news else [],
+
+{% if news %}
+        {% for item in news %}  
+            {% include 'tusi/section.html' %}
+        {% empty %}
+            Brak zawartości
+        {% endfor %}
+{% endif %}
+{% endcomment %}

@@ -1,0 +1,12 @@
+{% extends 'tusi/layout.html' %}
+{% load static %}
+
+{% block header %}
+    O nas
+{% endblock header %}
+
+{% block content %}
+    {% for item in posts %}  
+        {% include 'tusi/section.html' %}
+    {% endfor %}
+{% endblock content %}

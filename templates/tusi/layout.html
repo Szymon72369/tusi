@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Diagnoza i terapia TUSI | Strona główna" />
+    <meta name="keywords" content="tusi, diagnoza, terapia, diagnoza i terapia" />
+    {% if title %} <title>{{ title }}</title> {% else %} <title>Tusi</title> {% endif %}
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'tusi/style.css' %}">
+    <link rel="stylesheet" href="{% static 'tusi/section.css' %}">
+    <script src="{% static 'tusi/navbar.js' %}" defer></script>
+    <script src="{% static 'tusi/hero.js' %}" defer></script>
+    <script src="{% static 'tusi/scrollUp.js' %}" defer></script>
+</head>
+<body>
+
+    <div id="nav">
+        <form class="search-field" action="" method="get">
+            <input type="text" name="search-field" placeholder="Szukaj..." />
+        </form>
+        <a href="{% url 'home' %}" id="nav-mobile-home-button"><img src="{% static 'img/home.svg' %}" alt="Strona Domowa" /></a>
+        <a href="{% url 'home' %}">Strona Domowa</a>
+        <a href="{% url 'news' %}">Aktualności</a>
+        <a href="{% url 'about_us' %}">O nas</a>
+        <div class="dropdown">
+            <a href="{% url 'offer' %}">Oferta</a>
+            <div class="dropdown-content">
+                <a href="{% url 'pricing' %}">Cennik</a>
+                {% for item in offer_subpage %}
+                    <a href="{% url 'offer_subpage' slug=item.slug %}">{{ item.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{% url 'gallery' %}">Galeria</a>
+        <a href="{% url 'contact' %}">Kontakt</a>        
+    </div>
+    <button id="menu-button" onclick="openMenu()">
+        <img class="menu-button" src="{% static 'img/menu.svg' %}" alt="Menu" />
+    </button>
+    <div id="nav-mobile">
+        <a id="close-button" onclick="closeMenu()">
+            <img src="{% static 'img/close.svg' %}" alt="Zamknij" />
+        </a>
+        <a href="{% url 'news' %}">Aktualności</a>
+        <a href="{% url 'about_us' %}">O nas</a>
+        <a href="{% url 'offer' %}">Oferta</a>
+            <ul>
+                {% for item in offer_subpage %}
+                <li>
+                    <a href="{% url 'offer_subpage' slug=item.slug %}">{{ item.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        <a href="{% url 'gallery' %}">Galeria</a>
+        <a href="{% url 'contact' %}">Kontakt</a>
+    </div>
+    <div id="nav-mobile-blur" onclick="closeMenu()"></div>
+    
+
+    <div id="wrapper">
+
+        <div id="hero-wrapper">
+            <div id="hero">
+                {% block hero %}
+                {% endblock hero %}
+            </div>
+        </div>
+
+        <div class="header">
+            {% block header %}
+            {% endblock header %}
+        </div>
+
+        <div id="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div> <!-- wrapper -->
+
+
+    <div id="footer">
+        <p>Diagnoza i terapia TUSI</p><br>
+
+        <span class="footer-contact">
+            <p><img src="{% static 'img/phone.svg' %}">{{footer.phone}}</p>
+            <p><img src="{% static 'img/email.svg' %}">{{footer.email}}</p>
+            <p><img src="{% static 'img/place.svg' %}">{{footer.adres}}</p>
+        </span>
+        <a class="admin-button" href="/admin/">admin</a>
+    </div>
+    <button id="scrollTopBtn">↑</button>
+
+</body>
+</html>

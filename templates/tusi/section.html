@@ -1,0 +1,63 @@
+{% load static %}
+
+{% block section %}
+
+<div id="container">
+    <section class="section {{ item.style }} {{ item.color }} ">
+        <div class="section-body">
+            <div class="col1">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}"/>
+                {% endif %}
+                {% if item.date %}
+                    <div class="data">dodano: {{ item.date|date:"l, d F Y" }}</div>
+                {% endif %}
+                {% if item.title %}
+                    <h2 class="h-bottom">{{ item.title }}</h2>
+                {% endif %}
+            </div> <!-- col1 -->
+            <div class="col2">
+                {% if item.title %}
+                    <h2>{{ item.title }}</h2>
+                {% endif %}
+                <p>{{ item.text|safe }}</p>
+                {% if item.file %}
+                    <a href="{{ item.file.url }}" target="_blank">{{ item.file_text }}</a><br>
+                {% endif %}
+                {% if item.button_text %}
+                    <a class="button" href="{{ item.button_link|default:'#' }}">{{ item.button_text }}</a>
+                {% endif %}
+            </div> <!-- col2 -->
+        </div> <!-- section-body -->
+    </section>
+</div> <!-- container -->
+
+{% endblock section %}
+
+
+{% comment %} 
+    <div class="col1">
+        {% if item.image %}
+            <img src="{{ item.image.url }}"/>
+        {% endif %}
+        {% if item.date %}
+            <div class="data">dodano: {{ item.date|date:"l, d F Y" }}</div>
+        {% endif %}
+        {% if item.title %}
+            <h2 class="h-bottom">{{ item.title }}</h2>
+        {% endif %}
+    </div> <!-- col1 -->
+    <div class="col2">
+        {% if item.title %}
+            <h2>{{ item.title }}</h2>
+        {% endif %}
+        <p>{{ item.text|safe }}</p>
+        {% if item.file %}
+            <a href="{{ item.file.url }}" target="_blank">{{ item.file_text }}</a>
+        {% endif %}
+        <br>
+        {% if item.button_text %}
+            <a class="button" href="{{ item.button_link|default:'#' }}">{{ item.button_text }}</a>
+        {% endif %}
+    </div> <!-- col2 -->
+{% endcomment %}

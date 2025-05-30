@@ -1,0 +1,20 @@
+{% extends 'tusi/layout.html' %}
+{% load static %}
+
+{% block header %}
+    Kontakt
+{% endblock header %}
+
+{% block content %}
+    {% for item in posts %}  
+        {% include 'tusi/section.html' %}
+    {% endfor %}
+
+<div class="map-container">
+    <div class="header">Tu jesteśmy</div>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d488.86832495747973!2d18.6230613056751!3d54.34880316817603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd752c6b0d536f%3A0xab483e59b142c001!2sTUSI%20-%20terapia%20sensoryczna%20Gda%C5%84sk%2C%20Terapia%20r%C4%99ki%20Gda%C5%84sk!5e0!3m2!1spl!2spl!4v1747943854916!5m2!1spl!2spl"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'tusi/layout.html' %}
+{% load static %}
+
+{% block header %}
+    Galeria
+{% endblock header %}
+
+{% block content %}
+{% if posts %}
+<div class="gallery-grid">
+    {% for item in posts %}
+        <div class="gallery-item {{ item.color }}">
+            {% if item.title %}
+                <h2 class="gallery-title">{{ item.title }}</h2>
+            {% endif %}
+            {% if item.text %}
+                <p class="gallery-description">{{ item.text|safe }}</p>
+            {% endif %}
+            {% if item.image %}
+                <img class="gallery-image" src="{{ item.image.url }}" alt="{{ item.title }}" onclick="openLightbox(this)">
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>Tutaj jeszcze nic nie ma...</p>
+{% endif %}
+
+
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
+</div>
+
+
+
+<script>
+function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
+</script>
+
+
+
+{% endblock content %}

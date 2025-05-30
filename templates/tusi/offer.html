@@ -1,0 +1,29 @@
+{% extends 'tusi/layout.html' %}
+{% load static %}
+
+{% block header %}
+    Oferta
+{% endblock header %}
+
+{% block content %}
+
+
+    {% for item in posts %}  
+        {% include 'tusi/section.html' %}
+    {% endfor %}
+
+
+    {% for item in items %}  
+        <a class="offer-link" href="{% url 'offer_subpage' slug=item.offer_item.slug %}">
+            {% include 'tusi/section.html' %}
+        </a>
+    {% endfor %}
+
+    
+{% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body style="background-color:var(--color-secondary)">
+    <div style="
+			text-align:center;
+			width:100%;
+			height:100%;
+			margin-left:auto;
+			margin-right:auto;">
+			
+        <h1 style="font-size:5rem;">Błąd 404!</h1>
+        <p style="font-size:2rem;">
+		Ups! Ta strona nie istnieje.</p>
+        <a class="button" href="{% url 'home' %}">Strona główna</a>
+		
+    </div>
+</body>
+</html>
