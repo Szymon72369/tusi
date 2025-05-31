@@ -25,7 +25,6 @@
     --z-nav-mobile: 10;
     --z-nav-mobile-btn: 11;
 }
-
 body {
     z-index: var(--z-body);
     font-family: var(--ff);
