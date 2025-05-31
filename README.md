@@ -143,3 +143,6 @@ In the **"Offer Subpages"** section, add or remove an entry that includes:
 
 > The system will **automatically generate** a slug based on the section name:
 > `slug = section-name`
+
+
+old original repo: https://github.com/SIWY203/tusi-web.git
